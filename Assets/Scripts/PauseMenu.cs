@@ -49,10 +49,12 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quiting Applicaiton");
         Application.Quit();
+        Resume();
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(0);
+        Resume();
     }
 }
