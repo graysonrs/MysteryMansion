@@ -38,25 +38,24 @@ public class GameEnding : MonoBehaviour
     // Update is getting called every frame, and checking whether the player’s character is at the exit. 
     void Update ()
     {
-        if(m_IsPlayerAtExit) // If m_IsPlayerAtExit is true, call EndLevel.  If it isn’t true, then check if m_IsPlayerCaught is true; if it is, call EndLevel.
+        if(m_IsPlayerAtExit)
         {
-            EndLevel (exitBackgroundImageCanvasGroup, false, exitAudio); // call to the EndLevel method if finished
+            EndLevel (exitBackgroundImageCanvasGroup, true, exitAudio);
 
         }
         else if(m_IsPlayerCaught)
         {
-            EndLevel (caughtBackgroundImageCanvasGroup, true, caughtAudio); // call to the EndLevel method if caught
+            EndLevel (caughtBackgroundImageCanvasGroup, false, caughtAudio);
         }
 
     }
 
-    void EndLevel (CanvasGroup imageCanvasGroup, bool doRestart, AudioSource audioSource)
+    void EndLevel (CanvasGroup imageCanvasGroup, bool finishedLevel, AudioSource audioSource)
     {
         if(!m_HasAudioPlayed) // if the audio has not yet played, play it.
         {
             audioSource.Play(); //play the audio
             m_HasAudioPlayed = true; //set the bool to true, so that the audio doesn't play again.
-
         }
 
         m_Timer += Time.deltaTime; //increment the timer by the time that has passed since the last frame.
@@ -64,13 +63,13 @@ public class GameEnding : MonoBehaviour
 
         if (m_Timer > fadeDuration + displayImageDuration)
         {
-            if (doRestart)
+            if (finishedLevel)
             {
-                SceneManager.LoadScene (0); // reload the first scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
-                Application.Quit ();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
