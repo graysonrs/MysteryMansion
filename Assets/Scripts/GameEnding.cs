@@ -27,7 +27,6 @@ public class GameEnding : MonoBehaviour
             m_IsPlayerAtExit = true;
 
         }
-
     }
 
     public void CaughtPlayer ()
