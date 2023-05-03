@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
     Vector3 m_Movement;
-    Quaternion m_Rotation = Quaternion.identity; // Quaternions are a way of storing rotations; they get around some of the problems with storing rotations as a 3D vector. 
+    Quaternion m_Rotation = Quaternion.identity;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = GetComponent<Animator> ();
         m_Rigidbody = GetComponent<Rigidbody> ();
         m_AudioSource = GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
