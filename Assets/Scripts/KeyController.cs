@@ -17,8 +17,6 @@ public class KeyController : MonoBehaviour
     private void Start()
     {
         NewKeyLoc();
-        Debug.Log("Key location set");
-
     }
 
     private void Update()
@@ -49,6 +47,7 @@ public class KeyController : MonoBehaviour
         // Pick a random waypoint to spawn the key object
         currentWaypointIndex = Random.Range(0, waypoints.Length);
         currentWaypoint = waypoints[currentWaypointIndex];
+        Debug.Log("Key location set to: " + currentWaypointIndex);
 
         // Set the position of the key object to the current waypoint
         transform.position = currentWaypoint.position;
