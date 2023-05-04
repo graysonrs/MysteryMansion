@@ -1640,8 +1640,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253, y: 118}
-  m_SizeDelta: {x: 331.88318, y: 234.34387}
+  m_AnchoredPosition: {x: -250, y: 71}
+  m_SizeDelta: {x: 331.88318, y: 0.6438389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978831528
 MonoBehaviour:
@@ -1663,7 +1663,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ranbdom stuiff testing testing
+  m_text: "Welcome to the haunted mansion.\nYour goal is to escape the haunted mansion,
+    alive...\n\nControls: \n- Arrow Keys to move\n- 'ESC' to access settings\n- 'F'
+    to interact (with butler)\n\nGuide:\n- Avoid the red vision cones of the ghost
+    and ghouls\n- Collect the key to unlock the mansion door"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
