@@ -10075,6 +10075,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5111605534855743241, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111605534855743241, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
+        type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 188ef86ea3751534ea913e73ac74680f, type: 3}
@@ -10158,6 +10163,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d6253b7e403715842b8fe40ca8eeee04, type: 2}
+    - target: {fileID: 6203132148389468257, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7121041989687667946, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
         type: 3}
       propertyPath: m_IsTrigger
@@ -13383,7 +13393,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6f8ac1fb6c4da43309fc6f2608f82ab6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 1
   Mute: 0
