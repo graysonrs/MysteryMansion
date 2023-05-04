@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis ("Horizontal");
         float vertical = -Input.GetAxis ("Vertical");
-        m_Movement.Set(-horizontal, 0f, vertical);
+        m_Movement.Set(vertical, 0f, horizontal);
         m_Movement.Normalize ();
         bool hasHorizontalInput = !Mathf.Approximately (horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately (vertical, 0f);
@@ -36,17 +36,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 m_AudioSource.Play();
             }
-
         }
         else
         {
             m_AudioSource.Stop();
-
         }
 
         Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation (desiredForward);
-        
     }
 
     void OnAnimatorMove ()
