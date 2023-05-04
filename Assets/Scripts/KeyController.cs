@@ -9,6 +9,7 @@ public class KeyController : MonoBehaviour
     public float rotateSpeed = 30f; // adjust the speed of the rotation
     public Transform[] waypoints; // assign the list of checkpoints to this variable in the inspector
     public GameObject player;
+    public AudioSource keyPickUp;
 
     private bool hasKey = false;
     private Transform currentWaypoint;
@@ -29,6 +30,14 @@ public class KeyController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (hasKey)
+        {
+            Debug.Log("Playing key pickup audio");
+            keyPickUp.Play(); //play the audio
+        }
+    }
     private void FixedUpdate()
     {
         if (currentWaypoint != null)
