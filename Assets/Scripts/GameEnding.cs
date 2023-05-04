@@ -12,6 +12,7 @@ public class GameEnding : MonoBehaviour
     public AudioSource exitAudio;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
     public AudioSource caughtAudio;
+    public CheckKeys keys;
 
     bool m_IsPlayerAtExit; // You need a way of knowing when to start fading the Canvas Group in. Since the Canvas Group should either be fading or not, a bool variable is perfect for this. 
     bool m_IsPlayerCaught; 
@@ -22,7 +23,7 @@ public class GameEnding : MonoBehaviour
     void OnTriggerEnter (Collider other) //special method for MonoBehaviours called OnTriggerEnter.
     {
         //ensure that the ending is only triggered when JohnLemon hits the Box Collider
-        if (other.gameObject == player )
+        if (other.gameObject == player && keys.HasAllKeys())
         {
             m_IsPlayerAtExit = true;
         }
