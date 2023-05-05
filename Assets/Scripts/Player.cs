@@ -5,31 +5,53 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int lives;
-    public Image[] hearts;
+    public int numOfHearts;
+    public float invulnerabilityDuration;
 
+    private bool isInvulnerable = false;
     private float timer = 0f;
-    private float delay = 6f;
-    private int numOfHearts;
+    // private int numOfHearts;
+    private bool dead;
 
-    // Start is called before the first frame update
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        numOfHearts = lives;
-        Debug.Log(numOfHearts);
+        // numOfHearts = lives;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < hearts.Length; i++)
+        Debug.Log($"In Update: {numOfHearts} // {gameObject.name}");
+        if (numOfHearts <= 0)
         {
-            if (i < numOfHearts)
+            dead = true;
+        }
+        if (isInvulnerable)
+        {
+            // Calculate the duration since the player became invulnerable
+            timer += Time.deltaTime;
+            // If the duration is less than the invulnerability duration, make the player sprite flicker
+            if (timer < invulnerabilityDuration)
             {
-                hearts[i].enabled = true;
-            } else
+                // Set the sprite renderer's enabled property based on the current time
+                float remainder = timer % 0.2f;
+                if (remainder < 0.1f)
+                {
+                    spriteRenderer.enabled = true;
+                }
+                else
+                {
+                    spriteRenderer.enabled = false;
+                }
+            }
+            // Otherwise, make the player vulnerable again
+            else
             {
-                hearts[i].enabled = false;
+                spriteRenderer.enabled = true;
+                isInvulnerable = false;
+                timer = 0f;
             }
         }
     }
@@ -41,25 +63,28 @@ public class Player : MonoBehaviour
 
     public void LoseLife()
     {
-        Debug.Log("Lost Life");
-        numOfHearts--;
-    }
-
-    public void ResetLives()
-    {
-       numOfHearts = lives;
+        if (!isInvulnerable) {
+            numOfHearts--;
+            Debug.Log($"Lost life: {numOfHearts} // {gameObject.name}");
+            if (numOfHearts <= 0)
+            {
+                dead = true;
+            }
+        }
     }
 
     public void CaughtPlayer()
     {
-        if (timer < delay)
+        if (!isInvulnerable)
         {
-            timer += Time.deltaTime;
-            return;
+            isInvulnerable = true;
+            Debug.Log("Lives: " + GetLives());
+            // LoseLife();
         }
+    }
 
-        Debug.Log("Lives: " + GetLives());
-        // LoseLife();
-        timer = 0f;
+    public bool isDead()
+    {
+        return dead;
     }
 }

@@ -7,7 +7,7 @@ public class GameEnding : MonoBehaviour
 {
     public float fadeDuration = 1f; //screen to fade out over a certain period of time. It should be a public variable, so you can adjust it from the Inspector. 
     public float displayImageDuration = 1f; //duration of the image to be displayed.
-    public GameObject player; // fade should happen when the player’s character hits the Trigger.
+    public Player player; // fade should happen when the player’s character hits the Trigger.
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public AudioSource exitAudio;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
@@ -31,7 +31,12 @@ public class GameEnding : MonoBehaviour
 
     public void CaughtPlayer ()
     {
-        m_IsPlayerCaught = true;
+        player.LoseLife();
+        if (player.isDead()) {
+            m_IsPlayerCaught = true;
+        } else {
+            m_IsPlayerCaught = false;
+        }
     }
 
     // Update is getting called every frame, and checking whether the player’s character is at the exit. 
@@ -40,13 +45,11 @@ public class GameEnding : MonoBehaviour
         if(m_IsPlayerAtExit)
         {
             EndLevel (exitBackgroundImageCanvasGroup, true, exitAudio);
-
         }
         else if(m_IsPlayerCaught)
         {
             EndLevel (caughtBackgroundImageCanvasGroup, false, caughtAudio);
         }
-
     }
 
     void EndLevel (CanvasGroup imageCanvasGroup, bool finishedLevel, AudioSource audioSource)
@@ -72,5 +75,4 @@ public class GameEnding : MonoBehaviour
             }
         }
     }
-    
 }

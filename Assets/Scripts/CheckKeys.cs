@@ -6,6 +6,7 @@ public class CheckKeys : MonoBehaviour
 {
     private KeyController[] keys;
     private bool hasAllKey = false;
+    private int keyLeft;
 
     private void Start()
     {
@@ -16,10 +17,11 @@ public class CheckKeys : MonoBehaviour
     private void Update()
     {
         hasAllKey = true;
+        keyLeft = 0;
         foreach(var key in keys) {
             if (!(key.HasKey())) {
                 hasAllKey = false;
-                break;
+                keyLeft++;
             }
         }
         if (hasAllKey) {
@@ -29,5 +31,9 @@ public class CheckKeys : MonoBehaviour
 
     public bool HasAllKeys() {
         return hasAllKey;
+    }
+
+    public int keyCount() {
+        return keyLeft;
     }
 }

@@ -16,6 +16,7 @@ public class KeyController : MonoBehaviour
     private void Start()
     {
         transform.position = waypoint.position;
+        keyPickUp.playOnAwake = false;
     }
 
     private void Update()
@@ -24,26 +25,19 @@ public class KeyController : MonoBehaviour
         {
             Debug.Log("Got the Key!!!!!!!");
             Destroy(gameObject);
+            keyPickUp.Play(); //play the audio
             hasKey = true;
         }
     }
 
-    private void OnDestroy()
-    {
-        if (hasKey)
-        {
-            Debug.Log("Playing key pickup audio");
-            keyPickUp.Play(); //play the audio
-        }
-    }
     private void FixedUpdate()
     {
-            // Rotate the key object around the Y-axis
-            transform.Rotate(new Vector3(0, rotateSpeed, 0) * Time.fixedDeltaTime);
+        // Rotate the key object around the Y-axis
+        transform.Rotate(new Vector3(0, rotateSpeed, 0) * Time.fixedDeltaTime);
 
-            // Float the key object up and down along the Y-axis
-            float newY = Mathf.Sin(Time.time * floatSpeed) * 0.2f; // adjust the amplitude of the float
-            transform.position = new Vector3(transform.position.x, newY + 0.5f, transform.position.z); // adjust the initial height of the float
+        // Float the key object up and down along the Y-axis
+        float newY = Mathf.Sin(Time.time * floatSpeed) * 0.2f; // adjust the amplitude of the float
+        transform.position = new Vector3(transform.position.x, newY + 0.5f, transform.position.z); // adjust the initial height of the float
     }
 
     public bool HasKey()

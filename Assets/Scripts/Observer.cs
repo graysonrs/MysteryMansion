@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
-    public Transform player;
+    public Player player;
     public GameEnding gameEnding; // Reference to the GameEnding script
     bool m_IsPlayerInRange;
     void OnTriggerEnter (Collider other) //  detect when Player Enters in range of the Trigger
     {
-        if (other.transform == player) // check that Player is actually in range whenever OnTriggerEnter is called.
+        if (other.transform == player.transform) // check that Player is actually in range whenever OnTriggerEnter is called.
         {
             m_IsPlayerInRange = true;
         }
@@ -18,35 +18,27 @@ public class Observer : MonoBehaviour
     }
     void OnTriggerExit (Collider other) // detect when Player leaves the Trigger.
     {
-        if (other.transform == player) // check that Player is actually in range whenever OnTriggerEnter is called.
+        if (other.transform == player.transform) // check that Player is actually in range whenever OnTriggerEnter is called.
         {
             m_IsPlayerInRange = false;
         }
-
-
     }
 
     void Update ()
     {
         if(m_IsPlayerInRange)
         {
-            Vector3 direction = player.position - transform.position + Vector3.up; // direction from the PointOfView GameObject to Player is Player’s position minus the PointOfView GameObject’s position. 
+            Vector3 direction = player.transform.position - transform.position + Vector3.up; // direction from the PointOfView GameObject to Player is Player’s position minus the PointOfView GameObject’s position. 
             Ray ray = new Ray (transform.position, direction);
             RaycastHit raycastHit;
 
             if(Physics.Raycast(ray, out raycastHit))
             {
-                if(raycastHit.collider.transform == player)
+                if(raycastHit.collider.transform == player.transform)
                 {
-                    gameEnding.CaughtPlayer (); // calls the CaughtPlayer method in GameEnding script
-
+                    gameEnding.CaughtPlayer(); // calls the CaughtPlayer method in GameEnding script
                 }
-
             }
-
         }
-
     }
-    
-
 }
