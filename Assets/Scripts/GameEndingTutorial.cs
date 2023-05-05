@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameEnding : MonoBehaviour
+public class GameEndingTutorial : MonoBehaviour
 {
     public float fadeDuration = 1f; //screen to fade out over a certain period of time. It should be a public variable, so you can adjust it from the Inspector. 
-    public float displayImageDuration = 1f; //duration of the image to be displayed.
+    public float displayImageDuration = 2f; //duration of the image to be displayed.
     public GameObject player; // fade should happen when the player’s character hits the Trigger.
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public AudioSource exitAudio;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
     public AudioSource caughtAudio;
-    public CheckKeys keys;
 
     bool m_IsPlayerAtExit; // You need a way of knowing when to start fading the Canvas Group in. Since the Canvas Group should either be fading or not, a bool variable is perfect for this. 
 
@@ -22,8 +21,8 @@ public class GameEnding : MonoBehaviour
     void OnTriggerEnter (Collider other) //special method for MonoBehaviours called OnTriggerEnter.
     {
         Debug.Log("OnTriggerEnter");
-        //ensure that the ending is only triggered when JohnLemon hits the Box Collider
-        if (other.gameObject == player && keys.HasAllKeys())
+        //ensure that the ending is only triggered when protagionst hits the Box Collider
+        if (other.gameObject == player)
         {
             m_IsPlayerAtExit = true;
             Debug.Log("At End");

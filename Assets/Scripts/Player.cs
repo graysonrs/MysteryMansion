@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"In Update: {numOfHearts} // {gameObject.name}");
         if (numOfHearts <= 0)
         {
             dead = true;

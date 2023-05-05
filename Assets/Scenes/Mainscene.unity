@@ -8080,7 +8080,7 @@ PrefabInstance:
     - target: {fileID: 4581718618250850182, guid: 8146374d820c3ac45baeed5014144363,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4581718618250850182, guid: 8146374d820c3ac45baeed5014144363,
         type: 3}
@@ -9915,7 +9915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 1
-  displayImageDuration: 1
+  displayImageDuration: 2
   player: {fileID: 1043239553}
   exitBackgroundImageCanvasGroup: {fileID: 2137945139}
   exitAudio: {fileID: 1399868698}
