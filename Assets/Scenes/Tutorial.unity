@@ -13928,10 +13928,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f71ba6eba650548bd13feb7c093064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfHearts: 3
+  numOfHearts: 1
   invulnerabilityDuration: 2
   flickerInterval: 0.2
-  caughtAudio: {fileID: 0}
+  caughtAudio: {fileID: 945468572}
 --- !u!4 &1488327506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1276441928187125716, guid: ef9789f967fcaa046af0ceaa6b6701e5,
@@ -14977,7 +14977,7 @@ MonoBehaviour:
   player: {fileID: 1488327497}
   exitBackgroundImageCanvasGroup: {fileID: 83988721}
   exitAudio: {fileID: 696602753}
-  caughtBackgroundImageCanvasGroup: {fileID: 83988721}
+  caughtBackgroundImageCanvasGroup: {fileID: 300173844}
   caughtAudio: {fileID: 945468572}
   keys: {fileID: 1845583463}
 --- !u!65 &1656985401
@@ -16580,6 +16580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d0798076eafcc44a7fba6c502b70b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitDoor: {fileID: 0}
 --- !u!4 &1845583464
 Transform:
   m_ObjectHideFlags: 0
