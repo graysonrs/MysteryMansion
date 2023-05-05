@@ -7,7 +7,7 @@ public class GameEnding : MonoBehaviour
 {
     public float fadeDuration = 1f; //screen to fade out over a certain period of time. It should be a public variable, so you can adjust it from the Inspector. 
     public float displayImageDuration = 1f; //duration of the image to be displayed.
-    public Player player; // fade should happen when the player’s character hits the Trigger.
+    public GameObject player; // fade should happen when the player’s character hits the Trigger.
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public AudioSource exitAudio;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
@@ -21,10 +21,12 @@ public class GameEnding : MonoBehaviour
 
     void OnTriggerEnter (Collider other) //special method for MonoBehaviours called OnTriggerEnter.
     {
+        Debug.Log("OnTriggerEnter");
         //ensure that the ending is only triggered when JohnLemon hits the Box Collider
         if (other.gameObject == player && keys.HasAllKeys())
         {
             m_IsPlayerAtExit = true;
+            Debug.Log("At End");
         }
     }
 
@@ -35,7 +37,7 @@ public class GameEnding : MonoBehaviour
         {
             EndLevel (exitBackgroundImageCanvasGroup, true, exitAudio);
         }
-        else if(player.isDead())
+        else if(player.GetComponent<Player>().isDead())
         {
             EndLevel (caughtBackgroundImageCanvasGroup, false, caughtAudio);
         }
