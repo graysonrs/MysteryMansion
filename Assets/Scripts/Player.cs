@@ -7,23 +7,15 @@ public class Player : MonoBehaviour
 {
     public int numOfHearts;
     public float invulnerabilityDuration;
+    public float flickerInterval = 0.2f;
 
     private bool isInvulnerable = false;
     private float timer = 0f;
-    // private int numOfHearts;
     private bool dead;
-
-    private SpriteRenderer spriteRenderer;
-
-    void Start()
-    {
-        // numOfHearts = lives;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+    public AudioSource caughtAudio;
 
     void Update()
     {
-        Debug.Log($"In Update: {numOfHearts} // {gameObject.name}");
         if (numOfHearts <= 0)
         {
             dead = true;
@@ -35,24 +27,49 @@ public class Player : MonoBehaviour
             // If the duration is less than the invulnerability duration, make the player sprite flicker
             if (timer < invulnerabilityDuration)
             {
-                // Set the sprite renderer's enabled property based on the current time
-                float remainder = timer % 0.2f;
-                if (remainder < 0.1f)
-                {
-                    spriteRenderer.enabled = true;
-                }
-                else
-                {
-                    spriteRenderer.enabled = false;
-                }
+                float remainder = timer % flickerInterval;
+                bool show = remainder < flickerInterval / 2;
+                SetAlphaRecursively(gameObject, show ? 1f : 0f);
             }
             // Otherwise, make the player vulnerable again
             else
             {
-                spriteRenderer.enabled = true;
+                SetAlphaRecursively(gameObject, 1f);
                 isInvulnerable = false;
                 timer = 0f;
             }
+        }
+    }
+
+    private void SetAlphaRecursively(GameObject obj, float alpha)
+    {
+        Renderer[] renderers = obj.GetComponents<Renderer>();
+        foreach (Renderer renderer in renderers)
+        {
+            Material[] materials = renderer.materials;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                Color color = materials[i].color;
+                color.a = alpha;
+                materials[i].color = color;
+            }
+        }
+
+        SkinnedMeshRenderer[] skinnedRenderers = obj.GetComponents<SkinnedMeshRenderer>();
+        foreach (SkinnedMeshRenderer skinnedRenderer in skinnedRenderers)
+        {
+            Material[] materials = skinnedRenderer.materials;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                Color color = materials[i].color;
+                color.a = alpha;
+                materials[i].color = color;
+            }
+        }
+
+        for (int i = 0; i < obj.transform.childCount; i++)
+        {
+            SetAlphaRecursively(obj.transform.GetChild(i).gameObject, alpha);
         }
     }
 
@@ -65,6 +82,7 @@ public class Player : MonoBehaviour
     {
         if (!isInvulnerable)
         {
+            caughtAudio.Play();
             isInvulnerable = true;
             numOfHearts--;
             Debug.Log($"Lost life: {numOfHearts} // {gameObject.name}");
