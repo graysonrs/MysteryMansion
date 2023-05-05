@@ -348,7 +348,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 7982369048050864617, guid: cc3369cd26a0b1c48aa41279941090de,
         type: 3}
       propertyPath: gameEnding
@@ -803,7 +803,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 7982369048050864617, guid: cc3369cd26a0b1c48aa41279941090de,
         type: 3}
       propertyPath: gameEnding
@@ -8416,7 +8416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDuration: 1
   displayImageDuration: 1
-  player: {fileID: 1043239546}
+  player: {fileID: 1043239553}
   exitBackgroundImageCanvasGroup: {fileID: 2137945139}
   exitAudio: {fileID: 1399868698}
   caughtBackgroundImageCanvasGroup: {fileID: 961941300}
@@ -8697,7 +8697,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 8210482215149420813, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
         type: 3}
       propertyPath: gameEnding
@@ -8849,7 +8849,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 8210482215149420813, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
         type: 3}
       propertyPath: gameEnding
@@ -10286,7 +10286,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 7982369048050864617, guid: cc3369cd26a0b1c48aa41279941090de,
         type: 3}
       propertyPath: gameEnding
@@ -10430,7 +10430,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1856277085}
+      objectReference: {fileID: 1043239553}
     - target: {fileID: 8210482215149420813, guid: 6bb67fb56dd2c41419a620f77cd98c0f,
         type: 3}
       propertyPath: gameEnding

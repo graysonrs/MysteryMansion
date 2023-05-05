@@ -15,7 +15,6 @@ public class GameEnding : MonoBehaviour
     public CheckKeys keys;
 
     bool m_IsPlayerAtExit; // You need a way of knowing when to start fading the Canvas Group in. Since the Canvas Group should either be fading or not, a bool variable is perfect for this. 
-    bool m_IsPlayerCaught; 
 
     float m_Timer; // timer, to ensure that the game doesn't end before the fade has finished.
     bool m_HasAudioPlayed;
@@ -29,16 +28,6 @@ public class GameEnding : MonoBehaviour
         }
     }
 
-    public void CaughtPlayer ()
-    {
-        player.LoseLife();
-        if (player.isDead()) {
-            m_IsPlayerCaught = true;
-        } else {
-            m_IsPlayerCaught = false;
-        }
-    }
-
     // Update is getting called every frame, and checking whether the player’s character is at the exit. 
     void Update ()
     {
@@ -46,7 +35,7 @@ public class GameEnding : MonoBehaviour
         {
             EndLevel (exitBackgroundImageCanvasGroup, true, exitAudio);
         }
-        else if(m_IsPlayerCaught)
+        else if(player.isDead())
         {
             EndLevel (caughtBackgroundImageCanvasGroup, false, caughtAudio);
         }

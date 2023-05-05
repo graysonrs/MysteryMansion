@@ -61,25 +61,17 @@ public class Player : MonoBehaviour
         return numOfHearts;
     }
 
-    public void LoseLife()
+    public void CaughtPlayer()
     {
-        if (!isInvulnerable) {
+        if (!isInvulnerable)
+        {
+            isInvulnerable = true;
             numOfHearts--;
             Debug.Log($"Lost life: {numOfHearts} // {gameObject.name}");
             if (numOfHearts <= 0)
             {
                 dead = true;
             }
-        }
-    }
-
-    public void CaughtPlayer()
-    {
-        if (!isInvulnerable)
-        {
-            isInvulnerable = true;
-            Debug.Log("Lives: " + GetLives());
-            // LoseLife();
         }
     }
 
