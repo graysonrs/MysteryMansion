@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckKeys : MonoBehaviour
 {
+    public GameObject exitDoor;
     private KeyController[] keys;
     private bool hasAllKey = false;
     private int keyLeft;
@@ -26,6 +27,7 @@ public class CheckKeys : MonoBehaviour
         }
         if (hasAllKey) {
             Debug.Log("Has All the Keys!!!!!!!!!!!!!!!!!!");
+            Destroy(exitDoor);
         }
     }
 

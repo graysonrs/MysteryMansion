@@ -21,12 +21,10 @@ public class GameEnding : MonoBehaviour
 
     void OnTriggerEnter (Collider other) //special method for MonoBehaviours called OnTriggerEnter.
     {
-        Debug.Log("OnTriggerEnter");
         //ensure that the ending is only triggered when JohnLemon hits the Box Collider
         if (other.gameObject == player && keys.HasAllKeys())
         {
             m_IsPlayerAtExit = true;
-            Debug.Log("At End");
         }
     }
 

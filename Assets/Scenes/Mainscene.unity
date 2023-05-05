@@ -4994,6 +4994,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -344.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4076557792666829636, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076557792666829636, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.53
+      objectReference: {fileID: 0}
     - target: {fileID: 4223362671095491786, guid: 549c69af39b84624b8a053537c407def,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6284,6 +6294,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 635842006}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635842010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4072602731007889024, guid: 549c69af39b84624b8a053537c407def,
+    type: 3}
+  m_PrefabInstance: {fileID: 635842006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &635842011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635842010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.17, y: 2.59, z: 0.37}
+  m_Center: {x: 0.0036889622, y: 0.92855, z: 0.17950214}
 --- !u!1 &683305465
 GameObject:
   m_ObjectHideFlags: 0
@@ -10079,7 +10108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeDuration: 1
   displayImageDuration: 2
-  player: {fileID: 0}
+  player: {fileID: 1043239546}
   exitBackgroundImageCanvasGroup: {fileID: 2137945139}
   exitAudio: {fileID: 1399868698}
   caughtBackgroundImageCanvasGroup: {fileID: 961941300}
@@ -10514,6 +10543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d0798076eafcc44a7fba6c502b70b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitDoor: {fileID: 635842010}
 --- !u!1001 &1619105038
 PrefabInstance:
   m_ObjectHideFlags: 0
