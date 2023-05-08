@@ -1,13 +1,24 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class ButlerDialogue : MonoBehaviour
 {
     public GameObject dialoguePanel;  // The canvas that displays the dialogue
+    public GameObject cluePanel;  // The canvas that displays the dialogue
     public GameObject interactionPanel;
     public GameObject player;
 
+    private NavMeshAgent agent;
     private bool isPlayerNearby = false;  // Whether the player is nearby the NPC
+    private bool playerTalked = false;
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        interactionPanel.SetActive(false);
+        dialoguePanel.SetActive(false);
+    }
 
     void Update()
     {
@@ -17,10 +28,14 @@ public class ButlerDialogue : MonoBehaviour
         }
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
         {
+            playerTalked = true;
             interactionPanel.SetActive(false);
             // Show the dialogue canvas
             dialoguePanel.SetActive(true);
         }
+        // if (!isPlayerNearby && !playerTalked) {
+        //     cluePanel.SetActive(false);
+        // }
     }
 
     void OnTriggerEnter(Collider other)

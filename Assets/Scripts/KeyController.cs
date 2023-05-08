@@ -44,4 +44,8 @@ public class KeyController : MonoBehaviour
     {
         return hasKey;
     }
+
+    public Transform GetLoc() {
+        return waypoint;
+    }
 }

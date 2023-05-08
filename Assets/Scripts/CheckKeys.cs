@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class CheckKeys : MonoBehaviour
     private KeyController[] keys;
     private bool hasAllKey = false;
     private int keyLeft;
+    private Transform firstKey;
 
     private void Start()
     {
@@ -19,9 +21,13 @@ public class CheckKeys : MonoBehaviour
     {
         hasAllKey = true;
         keyLeft = 0;
+        KeyController[] reversedArray = new KeyController[keys.Length];
+        Array.Copy(keys, reversedArray, keys.Length);
+        Array.Reverse(reversedArray);
         foreach(var key in keys) {
             if (!(key.HasKey())) {
                 hasAllKey = false;
+                firstKey = key.GetLoc();
                 keyLeft++;
             }
         }
@@ -37,5 +43,9 @@ public class CheckKeys : MonoBehaviour
 
     public int keyCount() {
         return keyLeft;
+    }
+
+    public Transform GetDestination() {
+        return firstKey;
     }
 }

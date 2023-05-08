@@ -13,7 +13,6 @@ public class WaypointPatrol : MonoBehaviour
     void Start()
     {
         navMeshAgent.SetDestination(waypoints[0].position); //set the destination of the NavMeshAgent to the first waypoint
-        
     }
 
     // Update is called once per frame
@@ -25,6 +24,5 @@ public class WaypointPatrol : MonoBehaviour
             navMeshAgent.SetDestination (waypoints[m_CurrentWaypointIndex].position); //set the destination of the NavMeshAgent to the next waypoint
 
         }
-        
     }
 }
